@@ -9,7 +9,20 @@ public partial class Solution
     /// <returns>Maximum element in arr.</returns>
     public int FindMaxElement(int[][] arr)
     {
-        throw new NotImplementedException();
+        int maxElement = arr[0][0];
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            for (int j = 0; j < arr[i].Length; j++)
+            {
+                if (arr[i][j] > maxElement )
+                {
+                    maxElement  = arr[i][j];
+                }
+            }
+        }
+
+        return maxElement ;
     }
 
     /// <summary>
@@ -38,7 +51,16 @@ public partial class Solution
     /// <returns></returns>
     public int CalculateSumOfElements(int[][] arr)
     {
-        throw new NotImplementedException();
+        int sumOfelems = 0;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            for (int j = 0; j< arr[i].Length; j++)
+            {
+                sumOfelems += arr[i][j];
+            }
+        }
+
+        return sumOfelems;
     }
 
 
@@ -174,6 +196,20 @@ public partial class Solution
     /// <returns></returns>
     public int CountOccurrencesIn2DArray(char[,] array, char target)
     {
-        throw new NotImplementedException();
+        int counter = 0;
+        int lengthOfFirst = array.GetLength(0);
+        int lengthOfSecond = array.GetLength(1);
+        for (int i = 0; i < lengthOfFirst; i++)
+        {
+            for (int j = 0; j < lengthOfSecond; j++)
+            {
+                if (array[i,j] == target)
+                {
+                    counter++;
+                }
+            }
+        }
+
+        return counter;
     }
 }
