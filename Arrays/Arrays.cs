@@ -149,7 +149,31 @@ public partial class Solution
     /// <returns></returns>
     public int FindMaxSubarraySum(int[] arr)
     {
-        throw new NotImplementedException();
+        int maxSum = arr[0];
+        int xozrgiSum = arr[0];
+
+        for (int i = 1; i < arr.Length; i++)
+        {
+            if (arr[i] < xozrgiSum + arr[i])
+            {
+                xozrgiSum = xozrgiSum + arr[i];
+            }
+            else
+            {
+                xozrgiSum = arr[i];
+            }
+
+            if (maxSum > xozrgiSum)
+            {
+                maxSum = maxSum;
+            }
+            else
+            {
+                maxSum = xozrgiSum;
+            }
+        }
+
+        return maxSum;
     }
 
     /// <summary>
