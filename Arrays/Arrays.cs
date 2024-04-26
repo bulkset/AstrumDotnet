@@ -114,7 +114,22 @@ public partial class Solution
     /// <param name="columnIndex"></param>
     public void SearchElement(int[][] arr, int target, out int rowIndex, out int columnIndex)
     {
-        throw new NotImplementedException();
+        rowIndex = -1;
+        columnIndex = -1;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            for (int j = 0; j < arr[i].Length; j++)
+            {
+                if (target == arr[i][j])
+                {
+                    rowIndex = i;
+                    columnIndex = j;
+                    return;
+                }
+                    
+            }
+        }
+        
     }
 
     /// <summary>
