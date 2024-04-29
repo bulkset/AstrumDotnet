@@ -32,7 +32,19 @@ public partial class Solution
     /// <returns></returns>
     public int[][] CalculateTranspose(int[][] matrix)
     {
-        throw new NotImplementedException ();
+        int rLength = matrix.Length;
+        int cLength = matrix[0].Length;
+        int[][] transpose = new int[cLength][];
+        for (int i = 0; i < cLength; i++)
+        {
+            transpose[i] = new int[rLength];
+            for (int j = 0; j < rLength; j++)
+            {
+                transpose[i][j] = matrix[i][j];
+            }
+        }
+
+        return transpose;
     }
 
     /// <summary>
@@ -41,7 +53,10 @@ public partial class Solution
     /// <param name="arr"></param>
     public void SortJaggedArray(int[][] arr)
     {
-        throw new NotImplementedException();
+        foreach (var subArr in arr)
+        {
+            Array.Sort(subArr);
+        }
     }
 
     /// <summary>
