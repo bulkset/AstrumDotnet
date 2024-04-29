@@ -175,7 +175,28 @@ public partial class Solution
     /// <returns></returns>
     public int CalculateMinScalarMultiplications(int[] chain)
     {
-        throw new NotImplementedException();
+        int n = chain.Length;
+        int[,] m = new int[n, n];
+
+        for (int i = 1; i < n; i++)
+            m[i, i] = 0;
+
+        for (int len = 2; len < n; len++)
+        {
+            for (int i = 1; i < n - len + 1; i++)
+            {
+                int j = i + len - 1;
+                m[i, j] = int.MaxValue;
+                for (int k = i; k < j; k++)
+                {
+                    int q = m[i, k] + m[k + 1, j] + chain[i - 1] * chain[k] * chain[j];
+                    if (q < m[i, j])
+                        m[i, j] = q;
+                }
+            }
+        }
+
+        return m[1, n - 1];
     }
 
     /// <summary>
@@ -223,14 +244,26 @@ public partial class Solution
     }
 
     /// <summary>
-    /// Given a jagged array of integers, sort the array in ascending order based on the sum of each row. If two rows have the same sum, maintain their relative order.
-    /// </summary>
-    /// <param name="arr"></param>
-    /// /// <returns></returns>
-    public void SortJaggedArrayByRowSum(int[][] arr)
+/// Given a jagged array of integers, sort the array in ascending order based on the sum of each row. If two rows have the same sum, maintain their relative order.
+/// </summary>
+/// <param name="arr">The jagged array to be sorted.</param>
+public void SortJaggedArrayByRowSum(int[][] arr)
+{
+    Array.Sort(arr, (a, b) =>
     {
-        throw new NotImplementedException();
-    }
+        int sumA = a.Sum();
+        int sumB = b.Sum();
+
+        if (sumA != sumB)
+        {
+            return sumA.CompareTo(sumB);
+        }
+
+        // If sums are equal, maintain relative order
+        return Array.IndexOf(arr, a).CompareTo(Array.IndexOf(arr, b));
+    });
+}
+
 
 
     /// <summary>
