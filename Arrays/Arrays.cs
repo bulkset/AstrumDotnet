@@ -85,7 +85,7 @@ public partial class Solution
     /// <param name="arr"></param>
     public void SortRowsBySum(int[][] arr)
     {
-        throw new NotImplementedException();
+        Array.Sort(arr, (a, b) => a.Sum().CompareTo(b.Sum()));
     }
 
     /// <summary>
@@ -95,7 +95,18 @@ public partial class Solution
     /// <returns></returns>
     public int[][] ConvertToJaggedArray(int[,] array)
     {
-        throw new NotImplementedException();
+        int rLength = array.GetLength(0);
+        int cLength = array.GetLength(1);
+        int[][] jaggedArray = new int[rLength][];
+        for (int i = 0; i < rLength; i++)
+        {
+            jaggedArray[i] = new int[cLength];
+            for (int j = 0; j < cLength; j++)
+            {
+                jaggedArray[i][j] = array[i, j];
+            }
+        }
+        return jaggedArray;
     }
 
     /// <summary>
@@ -107,7 +118,17 @@ public partial class Solution
     /// <returns></returns>
     public int[,] ReshapeArray(int[,] array, int rows, int columns)
     {
-        throw new NotImplementedException();
+        int[,] reshapedArray = new int[rows, columns];
+        int k = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                reshapedArray[i, j] = array[k / columns, k % columns];
+                k++;
+            }
+        }
+        return reshapedArray;
     }
 
     /// <summary>
